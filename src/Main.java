@@ -4,9 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    //TODO: implement proper command line interface
-    //TODO: improve scale
-
     /**
      * (c) Jakob Maier (2019)
      */
@@ -336,7 +333,6 @@ public class Main {
         System.out.println();
         System.out.println("Parsing Data...");
         parseArray(raw, data, print);
-
 
         System.out.println("Drawing Heatmap...");
         drawHeatmap(data, raw, scale, label);
