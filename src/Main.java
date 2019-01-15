@@ -338,5 +338,6 @@ public class Main {
         System.out.println("Finished.");
         StdDraw.save(filename+fileExtension);
         System.out.println(filename+fileExtension + " saved sucessfully");
+        System.exit(0);
     }
 }
