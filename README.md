@@ -26,8 +26,8 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
     Use this command to create and label the heatmap. <br>
     `java -jar RadioHeatmap.jar -f data.csv -i image -t png -l` 
     <br>
-
-    `Usage: java -jar RadioHeatmap.jar -f file -i image -t filetype [OPTIONS]
+    ```
+    Usage: java -jar RadioHeatmap.jar -f file -i image -t filetype [OPTIONS]
         `-f      path to csv source file [-f example.csv]`
         `-i      name of target image file [-i example]
         `-t      image file type [-t png/jpeg]`
@@ -39,5 +39,5 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
 
     Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png`
 
-
+    ```
 
