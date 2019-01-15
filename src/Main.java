@@ -165,7 +165,6 @@ public class Main {
 
         StdDraw.line(0, height-border, data[0].length, height-border);
 
-
         double mhzStep = 1e6 / Double.parseDouble(raw[0][4]);
         int mhz = 0;
         int step = 1;
@@ -293,15 +292,11 @@ public class Main {
                 default:
                     System.out.println();
             }
-
         }
-
         return arguments;
-
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        //tst
         String[] arguments = cli(args);
         String PATH = arguments[0];
         String filename = arguments[1];
