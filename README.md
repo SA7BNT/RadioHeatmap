@@ -25,8 +25,19 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
   
     Use this command to create and label the heatmap. <br>
     `java -jar RadioHeatmap.jar -f data.csv -i image -t png -l` 
-  
-    You can also use `java -jar RadioHeatmap.jar --help` 
+    <br>
 
-![Example Waterfall](examples/data.png)
+    `Usage: java -jar RadioHeatmap.jar -f file -i image -t filetype [OPTIONS]
+        `-f      path to csv source file [-f example.csv]`
+        `-i      name of target image file [-i example]
+        `-t      image file type [-t png/jpeg]`
+        `-p      Print raw data`
+        `-h      help`
+        `-s      draw scale on heatmap`
+        `-l      draw label on heatmap`
+        `-deb    debugging mode`
+
+    Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png`
+
+
 

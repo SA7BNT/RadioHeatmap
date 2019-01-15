@@ -15,21 +15,20 @@ public class Main {
         int colums = 0;
 
         Scanner lineScanner = new Scanner(new File(path));
-        Scanner columScanner = null;
+        Scanner columnScanner = null;
 
         while (lineScanner.hasNextLine()){
-            columScanner = new Scanner(lineScanner.nextLine());
-            columScanner.useDelimiter(",");
+            columnScanner = new Scanner(lineScanner.nextLine());
+            columnScanner.useDelimiter(",");
             colums = 0;
-
-            while (columScanner.hasNext()){
-                columScanner.next();
+            while (columnScanner.hasNext()){
+                columnScanner.next();
                 colums++;
             }
             lines++;
         }
 
-        columScanner.close();
+        columnScanner.close();
         lineScanner.close();
         if (DEBUGGING_MODE){
             System.out.println("Lines: " + lines);
