@@ -27,6 +27,6 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
     `java -jar RadioHeatmap.jar -f data.csv -i image -t png -l` 
   
     You can also use `java -jar RadioHeatmap.jar --help` 
-  
- ![Example Waterfall](examples/data.png)
+
+![Example Waterfall](examples/data.png)
 
