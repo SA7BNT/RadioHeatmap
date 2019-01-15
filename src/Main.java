@@ -10,6 +10,21 @@ public class Main {
 
     private static boolean DEBUGGING_MODE = false;
 
+    private static int getFreqStep(String[][] dataArray){
+        int rec = 1;
+        for (int y = 0; y < dataArray.length - 1; y++){
+            if (dataArray[y][1].equals(dataArray[y+1][1])){
+                rec++;
+            } else {
+                break;
+            }
+        }
+        if (DEBUGGING_MODE){
+            System.out.println("Frequency Step: " + rec);
+        }
+        return rec;
+    }
+
     private static void printArray(String[][] array){
         for (int i = 0; i < array.length; i++){
             for (int j = 0; j < array[0].length; j++){
@@ -174,21 +189,6 @@ public class Main {
             x++;
         }
         scanner.close();
-    }
-
-    private static int getFreqStep(String[][] dataArray){
-        int rec = 1;
-        for (int y = 0; y < dataArray.length - 1; y++){
-            if (dataArray[y][1].equals(dataArray[y+1][1])){
-                rec++;
-            } else {
-                break;
-            }
-        }
-        if (DEBUGGING_MODE){
-            System.out.println("Frequency Step: " + rec);
-        }
-        return rec;
     }
 
     private static double getMax(double[][] array){
