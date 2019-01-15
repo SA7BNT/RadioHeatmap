@@ -170,7 +170,7 @@ public class Main {
         System.out.println("Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png");
     }
 
-    private static void readFile(String path, String[][] dataArray) throws FileNotFoundException {
+    private static void readFile(String path, String[][] raw) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(path));
         Scanner dataScanner = null;
 
@@ -183,7 +183,7 @@ public class Main {
             int y = 0;
             while (dataScanner.hasNext()){
                 data = dataScanner.next();
-                dataArray[x][y] = data;
+                raw[x][y] = data;
                 y++;
             }
             x++;
