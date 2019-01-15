@@ -10,69 +10,6 @@ public class Main {
 
     private static boolean DEBUGGING_MODE = false;
 
-    private static String getLinesAndColums(String path) throws FileNotFoundException{
-        int lines = 0;
-        int colums = 0;
-
-        Scanner lineScanner = new Scanner(new File(path));
-        Scanner columnScanner = null;
-
-        while (lineScanner.hasNextLine()){
-            columnScanner = new Scanner(lineScanner.nextLine());
-            columnScanner.useDelimiter(",");
-            colums = 0;
-            while (columnScanner.hasNext()){
-                columnScanner.next();
-                colums++;
-            }
-            lines++;
-        }
-
-        columnScanner.close();
-        lineScanner.close();
-        if (DEBUGGING_MODE){
-            System.out.println("Lines: " + lines);
-            System.out.println("Columns: " + colums);
-        }
-        return colums + "-" + lines;
-    }
-
-    private static void readFile(String path, String[][] dataArray) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(path));
-        Scanner dataScanner = null;
-
-        String data = "";
-
-        int x = 0;
-        while (scanner.hasNextLine()){
-            dataScanner = new Scanner(scanner.nextLine());
-            dataScanner.useDelimiter(",");
-            int y = 0;
-            while (dataScanner.hasNext()){
-                data = dataScanner.next();
-                dataArray[x][y] = data;
-                y++;
-            }
-            x++;
-        }
-        scanner.close();
-    }
-
-    private static int getFreqStep(String[][] dataArray){
-        int rec = 1;
-        for (int y = 0; y < dataArray.length - 1; y++){
-            if (dataArray[y][1].equals(dataArray[y+1][1])){
-                rec++;
-            } else {
-                break;
-            }
-        }
-        if (DEBUGGING_MODE){
-            System.out.println("Frequency Step: " + rec);
-        }
-        return rec;
-    }
-
     private static void printArray(String[][] array){
         for (int i = 0; i < array.length; i++){
             for (int j = 0; j < array[0].length; j++){
@@ -89,30 +26,6 @@ public class Main {
             }
             System.out.println();
         }
-    }
-
-    private static double getMax(double[][] array){
-        double max = Double.MIN_VALUE;
-        for (int i = 0; i < array.length; i++){
-            for (int j = 0; j < array[0].length; j++){
-                if (array[i][j] > max){
-                    max = array[i][j];
-                }
-            }
-        }
-        return max;
-    }
-
-    private static double getMin(double[][] array){
-        double min = Double.MAX_VALUE;
-        for (int i = 0; i < array.length; i++){
-            for (int j = 0; j < array[0].length; j++){
-                if (array[i][j] < min){
-                    min = array[i][j];
-                }
-            }
-        }
-        return min;
     }
 
     private static void copyArray(String[][] raw, double[][] helper) {
@@ -137,7 +50,7 @@ public class Main {
         for (int y = 0; y < helper.length; y++){
             for (int x  = 0; x < helper[0].length; x++){
                 if (index == data[0].length)
-                   index = 0;
+                    index = 0;
                 data[y / freqStep][index] = helper[y][x];
                 index++;
             }
@@ -240,6 +153,93 @@ public class Main {
         System.out.println("    -deb    debugging mode");
         System.out.println();
         System.out.println("Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png");
+    }
+
+    private static void readFile(String path, String[][] dataArray) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(path));
+        Scanner dataScanner = null;
+
+        String data = "";
+
+        int x = 0;
+        while (scanner.hasNextLine()){
+            dataScanner = new Scanner(scanner.nextLine());
+            dataScanner.useDelimiter(",");
+            int y = 0;
+            while (dataScanner.hasNext()){
+                data = dataScanner.next();
+                dataArray[x][y] = data;
+                y++;
+            }
+            x++;
+        }
+        scanner.close();
+    }
+
+    private static int getFreqStep(String[][] dataArray){
+        int rec = 1;
+        for (int y = 0; y < dataArray.length - 1; y++){
+            if (dataArray[y][1].equals(dataArray[y+1][1])){
+                rec++;
+            } else {
+                break;
+            }
+        }
+        if (DEBUGGING_MODE){
+            System.out.println("Frequency Step: " + rec);
+        }
+        return rec;
+    }
+
+    private static double getMax(double[][] array){
+        double max = Double.MIN_VALUE;
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[0].length; j++){
+                if (array[i][j] > max){
+                    max = array[i][j];
+                }
+            }
+        }
+        return max;
+    }
+
+    private static double getMin(double[][] array){
+        double min = Double.MAX_VALUE;
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[0].length; j++){
+                if (array[i][j] < min){
+                    min = array[i][j];
+                }
+            }
+        }
+        return min;
+    }
+
+    private static String getLinesAndColums(String path) throws FileNotFoundException{
+        int lines = 0;
+        int colums = 0;
+
+        Scanner lineScanner = new Scanner(new File(path));
+        Scanner columnScanner = null;
+
+        while (lineScanner.hasNextLine()){
+            columnScanner = new Scanner(lineScanner.nextLine());
+            columnScanner.useDelimiter(",");
+            colums = 0;
+            while (columnScanner.hasNext()){
+                columnScanner.next();
+                colums++;
+            }
+            lines++;
+        }
+
+        columnScanner.close();
+        lineScanner.close();
+        if (DEBUGGING_MODE){
+            System.out.println("Lines: " + lines);
+            System.out.println("Columns: " + colums);
+        }
+        return colums + "-" + lines;
     }
 
     private static String[] cli(String[] args){
