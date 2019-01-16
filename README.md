@@ -40,6 +40,6 @@ To see some examples, view [example 1](examples/image_1.png) and [example 2](exa
         -sa     saturation [0.0 - 1.0]
         -deb    debugging mode
 
-    Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png`
+    Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png
     ```
 
