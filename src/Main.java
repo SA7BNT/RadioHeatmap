@@ -306,7 +306,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] testArgs = new String[]{"-f", "examples/airband.csv", "-i", "examples/image", "-t", "png", "-sa", "0.1"};
+        //For testing purposes
+        String[] testArgs = new String[]{"-f", "examples/survey_3.csv", "-i", "examples/image_3", "-t", "png", "-s", "-l"};
 
         boolean scale, label, print;
         String[] arguments = cli(testArgs);
