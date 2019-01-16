@@ -4,7 +4,7 @@
 
 
 ### Usage:
-To see some examples, view [example 1](examples/survey_1.png) and [example 2](examples/survey_2.png). 
+To see some examples, view [example 1](examples/image_1.png) and [example 2](examples/image_2.png). 
 
 1. Download repository
 
@@ -16,7 +16,7 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
     24h survey of the entire spectrum covered by the RTL-SDR:<br>
     `rtl_power -f 24M:1700M:1M -i 100 -g 50 -e 24h data.csv` 
   
-    Survey of the upper 19 MHz Airband for one hour. This can be used to find active air traffic control channels. <br>
+    Survey of the upper 19 MHz airband for one hour. This can be used to find active air traffic control channels. <br>
     `rtl_power -f 118M:140M:8k -i 10 -g 50 1h airband.csv` 
   
 3. Process data and create heatmap: <br>
@@ -32,10 +32,12 @@ To see some examples, view [example 1](examples/survey_1.png) and [example 2](ex
         -f      path to csv source file [-f example.csv]
         -i      name of target image file [-i example]
         -t      image file type [-t png/jpeg]
-        -p      Print raw data
+        -p      print raw data
         -h      help
         -s      draw scale on heatmap
         -l      draw label on heatmap
+        -br     brightness [0.0 - 1.0]
+        -sa     saturation [0.0 - 1.0]
         -deb    debugging mode
 
     Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png`
