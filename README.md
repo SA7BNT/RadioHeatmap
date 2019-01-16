@@ -1,4 +1,4 @@
-![Example Waterfall](examples/long_airband_survey.png)
+![Example Waterfall](examples/image_1.png)
 
 **Heatmap** is a piece of software for creating a heatmap from [rtl_power](https://github.com/keenerd/rtl-sdr) csv data collected using RTL-SDR software defined radio. Usefull for finding active frequencies in the rf spectrum. All decibel values are normalized and then drawn using Princeton's [StdDraw](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html) library. Blue represents the highest and red the lowest value. At the moment very large files cannot yet be processed. 
 
