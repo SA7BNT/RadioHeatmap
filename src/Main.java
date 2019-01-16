@@ -107,7 +107,7 @@ public class Main {
         }
     }
 
-    private static void drawHeatmap(double[][] data, String[][] raw, boolean scale, boolean label){
+    private static void drawHeatmap(double[][] data, String[][] raw, boolean scale, boolean label, float saturation, float brightness){
         int height = data.length;
         int width = data[0].length;
         int border = 20;
@@ -131,7 +131,7 @@ public class Main {
             startTime = System.nanoTime();
             for (int x = 0; x < data[0].length; x++){
                 float hue = (float) data[y][x];
-                StdDraw.setPenColor(Color.getHSBColor(hue, 1.0f, 0.8f));
+                StdDraw.setPenColor(Color.getHSBColor(hue, saturation, brightness));
                 StdDraw.point(x, y);
             }
             endTime = System.nanoTime();
@@ -155,7 +155,7 @@ public class Main {
         StdDraw.show();
     }
 
-    private static void printInfo(){
+    private static void printHelp(){
         System.out.println("Usage: java -jar RadioHeatmap.jar -f file -i image -t filetype [OPTIONS]");
         System.out.println();
         System.out.println("    -f      path to csv source file [-f example.csv]");
@@ -165,6 +165,8 @@ public class Main {
         System.out.println("    -h      help");
         System.out.println("    -s      draw scale on heatmap");
         System.out.println("    -l      draw label on heatmap");
+        System.out.println("    -sa     saturation [0.0 - 1.0]");
+        System.out.println("    -br     brightness [0.0 - 1.0]");
         System.out.println("    -deb    debugging mode");
         System.out.println();
         System.out.println("Example: java -jar RadioHeatmap.jar -f survey.csv -i survey -t png");
@@ -243,18 +245,18 @@ public class Main {
     }
 
     private static String[] cli(String[] args){
-        String[] arguments = new String[6];
+        String[] arguments = new String[8];
 
         if (args.length == 0){
             System.out.println("Not enough arguments");
-            printInfo();
+            printHelp();
             System.exit(1);
         }
         for (int i = 0; i < args.length; i++){
             switch (args[i]){
                 case  "-h":
                 case "--help":
-                    printInfo();
+                    printHelp();
                     System.exit(1);
                     break;
                 case "-v":
@@ -285,11 +287,18 @@ public class Main {
                 case "-p":
                     arguments[5] = "true";
                     break;
+                case "-sa":
+                    arguments[6] = args[i + 1];
+                    break;
+                case "-br":
+                    arguments[7] = args[i + 1];
+                    break;
                 case "-deb":
                     DEBUGGING_MODE = true;
                     break;
-                default:
-                    System.out.println();
+
+
+
             }
         }
         return arguments;
@@ -301,9 +310,13 @@ public class Main {
         String filename = arguments[1];
         String fileExtension = "." + arguments[2];
         boolean scale, label, print;
+        float saturation = 1.0f;
+        float brightness = 0.8f;
         scale = Boolean.parseBoolean(arguments[3]);
         label = Boolean.parseBoolean(arguments[4]);
         print = Boolean.parseBoolean(arguments[5]);
+        saturation = Float.parseFloat(arguments[6]);
+        brightness = Float.parseFloat(arguments[7]);
 
         System.out.println("Free Software by Jakob Maier (2019)");
         System.out.println("https://github.com/gue-ni/heatmap.git");
@@ -330,7 +343,7 @@ public class Main {
         parseArray(raw, data, print);
 
         System.out.println("Drawing Heatmap...");
-        drawHeatmap(data, raw, scale, label);
+        drawHeatmap(data, raw, scale, label, saturation, brightness);
 
         if (print)
             printArray(raw);
