@@ -296,6 +296,9 @@ public class Main {
                 case "-deb":
                     DEBUGGING_MODE = true;
                     break;
+                default:
+                    arguments[6] = "1.0";
+                    arguments[7] = "0.8";
 
 
 
@@ -305,18 +308,21 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] arguments = cli(args);
+        String[] testArgs = new String[]{"-f", "airband1.csv", "-i", "image", "-t", "png"};
+
+
+        String[] arguments = cli(testArgs);
         String PATH = arguments[0];
         String filename = arguments[1];
         String fileExtension = "." + arguments[2];
         boolean scale, label, print;
-        float saturation = 1.0f;
-        float brightness = 0.8f;
         scale = Boolean.parseBoolean(arguments[3]);
         label = Boolean.parseBoolean(arguments[4]);
         print = Boolean.parseBoolean(arguments[5]);
-        saturation = Float.parseFloat(arguments[6]);
-        brightness = Float.parseFloat(arguments[7]);
+        float saturation = Float.parseFloat(arguments[6]);
+        float brightness = Float.parseFloat(arguments[7]);
+
+        System.out.println("Saturation: "+saturation);
 
         System.out.println("Free Software by Jakob Maier (2019)");
         System.out.println("https://github.com/gue-ni/heatmap.git");
