@@ -247,6 +247,10 @@ public class Main {
     private static String[] cli(String[] args){
         String[] arguments = new String[8];
 
+        arguments[2] = "png";
+        arguments[6] = "1.0";
+        arguments[7] = "0.8";
+
         if (args.length == 0){
             System.out.println("Not enough arguments");
             printHelp();
@@ -296,26 +300,19 @@ public class Main {
                 case "-deb":
                     DEBUGGING_MODE = true;
                     break;
-                default:
-                    arguments[6] = "1.0";
-                    arguments[7] = "0.8";
-
-
-
             }
         }
         return arguments;
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] testArgs = new String[]{"-f", "airband1.csv", "-i", "image", "-t", "png"};
+        String[] testArgs = new String[]{"-f", "examples/airband.csv", "-i", "examples/image", "-t", "png", "-sa", "0.1"};
 
-
+        boolean scale, label, print;
         String[] arguments = cli(testArgs);
         String PATH = arguments[0];
         String filename = arguments[1];
         String fileExtension = "." + arguments[2];
-        boolean scale, label, print;
         scale = Boolean.parseBoolean(arguments[3]);
         label = Boolean.parseBoolean(arguments[4]);
         print = Boolean.parseBoolean(arguments[5]);
