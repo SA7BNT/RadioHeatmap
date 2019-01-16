@@ -107,17 +107,21 @@ public class Main {
         }
     }
 
-    private static void drawHeatmap(double[][] data, String[][] raw, boolean scale, boolean label, float saturation, float brightness){
+    private static void drawHeatmap(double[][] data, String[][] raw, String[] arguments){
         int height = data.length;
         int width = data[0].length;
         int border = 20;
+
+        float saturation = Float.parseFloat(arguments[6]);
+        float brightness = Float.parseFloat(arguments[7]);
+        boolean scale = Boolean.parseBoolean(arguments[3]);
+        boolean label = Boolean.parseBoolean(arguments[4]);
 
         if (!scale){
             border = 0;
         }
 
         height += border;
-
         StdDraw.setCanvasSize(width, height);
         StdDraw.setXscale(0, width);
         StdDraw.setYscale(0, height);
@@ -309,16 +313,13 @@ public class Main {
         //For testing purposes
         //String[] testArgs = new String[]{"-f", "examples/survey_1.csv", "-i", "examples/image_1", "-t", "png", "-s", "-l"};
 
-        boolean scale, label, print;
+        boolean print;
         String[] arguments = cli(args);
         String PATH = arguments[0];
         String filename = arguments[1];
         String fileExtension = "." + arguments[2];
-        scale = Boolean.parseBoolean(arguments[3]);
-        label = Boolean.parseBoolean(arguments[4]);
         print = Boolean.parseBoolean(arguments[5]);
-        float saturation = Float.parseFloat(arguments[6]);
-        float brightness = Float.parseFloat(arguments[7]);
+
 
         System.out.println("Free Software by Jakob Maier (2019)");
         System.out.println("https://github.com/gue-ni/heatmap.git");
@@ -345,7 +346,7 @@ public class Main {
         parseArray(raw, data, print);
 
         System.out.println("Drawing Heatmap...");
-        drawHeatmap(data, raw, scale, label, saturation, brightness);
+        drawHeatmap(data, raw, arguments);
 
         if (print)
             printArray(raw);
