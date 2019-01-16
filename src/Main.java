@@ -85,7 +85,7 @@ public class Main {
         }
     }
 
-    private static void drawScale(String[][] raw, double[][] data, int width, int height, int border) {
+    private static void drawScale(String[][] raw, double[][] data, int height, int border) {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.setPenRadius(0.002);
         StdDraw.setFont(new Font("Arial", Font.BOLD, 12));
@@ -150,7 +150,7 @@ public class Main {
         }
 
         if (scale)
-            drawScale(raw, data, width, height, border);
+            drawScale(raw, data, height, border);
 
         StdDraw.show();
     }
@@ -318,8 +318,6 @@ public class Main {
         print = Boolean.parseBoolean(arguments[5]);
         float saturation = Float.parseFloat(arguments[6]);
         float brightness = Float.parseFloat(arguments[7]);
-
-        System.out.println("Saturation: "+saturation);
 
         System.out.println("Free Software by Jakob Maier (2019)");
         System.out.println("https://github.com/gue-ni/heatmap.git");
