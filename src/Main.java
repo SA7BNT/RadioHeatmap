@@ -307,10 +307,10 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         //For testing purposes
-        String[] testArgs = new String[]{"-f", "examples/survey_3.csv", "-i", "examples/image_3", "-t", "png", "-s", "-l"};
+        //String[] testArgs = new String[]{"-f", "examples/survey_1.csv", "-i", "examples/image_1", "-t", "png", "-s", "-l"};
 
         boolean scale, label, print;
-        String[] arguments = cli(testArgs);
+        String[] arguments = cli(args);
         String PATH = arguments[0];
         String filename = arguments[1];
         String fileExtension = "." + arguments[2];
