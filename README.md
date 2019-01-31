@@ -7,7 +7,8 @@
 To see some examples, view [example 1](examples/image_1.png) and [example 2](examples/image_2.png). 
 
 1. Download repository
-
+    If you don't have a java runtime environment installed you can do it with this command:<br>
+    `sudo apt install openjdk-8-jre`<br>
     `git clone https://github.com/gue-ni/heatmap.git` <br>
     `cd build` <br>
 
